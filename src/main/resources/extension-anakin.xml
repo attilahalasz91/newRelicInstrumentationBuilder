@@ -1,0 +1,2255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension xmlns="https://newrelic.com/docs/java/xsd/v1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="newrelic-extension extension.xsd " name="extension-anakin"
+	version="1.0" enabled="true">
+	<instrumentation>
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.WorkflowHelper</className>
+			<method>
+				<name>createProcess</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.security.FailedLoginInfoUpdater</className>
+			<method>
+				<name>log</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.WorkflowProcess</className>
+			<method>
+				<name>getProcessExternalId</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.scheduler.ComponentSchedulerConfigurator</className>
+			<method>
+				<name>activate</name>
+			</method>
+			<method>
+				<name>disabsleSchedulers</name>
+			</method>
+			<method>
+				<name>enableSchedulers</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.scheduler.UtemezesScheduler</className>
+			<method>
+				<name>action</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.scheduler.AbstractJob</className>
+			<method>
+				<name>run</name>
+			</method>
+			<method>
+				<name>action</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.scheduler.SolrIndexingScheduler</className>
+			<method>
+				<name>action</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.initialloader.ElotoltottArfolyamService</className>
+			<method>
+				<name>load</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.initialloader.ElotoltottTermekKategoriaService</className>
+			<method>
+				<name>load</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.initialloader.ElotoltottTermekService</className>
+			<method>
+				<name>load</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.initialloader.ElotoltottZalognemService</className>
+			<method>
+				<name>load</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.initialloader.AnakinInitiallDataLoader</className>
+			<method>
+				<name>activate</name>
+			</method>
+			<method>
+				<name>loadData</name>
+			</method>
+			<method>
+				<name>initLoader</name>
+			</method>
+			<method>
+				<name>initDemoLoader</name>
+			</method>
+			<method>
+				<name>initRestTestDataLoader</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.initialloader.RestTestInitialLoader</className>
+			<method>
+				<name>load</name>
+			</method>
+			<method>
+				<name>loadFelhasznalokSzerepkorokkel</name>
+			</method>
+			<method>
+				<name>loadTermekekAndTermekVerziok</name>
+			</method>
+			<method>
+				<name>loadElzalogositasAndAjanlatAndUgyletWithValuerLogin</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.initialloader.ElotoltottDijszabasService</className>
+			<method>
+				<name>buildStdDijszabasokFor</name>
+			</method>
+			<method>
+				<name>load</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.initialloader.ElotoltottTargyleirasRoviditesekService</className>
+			<method>
+				<name>load</name>
+			</method>
+			<method>
+				<name>create</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.initialloader.ElotoltottKolcsonSemaService</className>
+			<method>
+				<name>load</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.initialloader.InitialLoaderContext</className>
+			<method>
+				<name>get</name>
+			</method>
+			<method>
+				<name>add</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.initialloader.TestZalogtargyBuilder</className>
+			<method>
+				<name>setTestZalogtargyBuilderMembers</name>
+			</method>
+			<method>
+				<name>create</name>
+			</method>
+			<method>
+				<name>createUjBecsles</name>
+			</method>
+			<method>
+				<name>createTargyFeljegyzes</name>
+			</method>
+			<method>
+				<name>zalogertek</name>
+			</method>
+			<method>
+				<name>azon</name>
+			</method>
+			<method>
+				<name>tipus</name>
+			</method>
+			<method>
+				<name>holVan</name>
+			</method>
+			<method>
+				<name>becsles</name>
+			</method>
+			<method>
+				<name>becslesIdopont</name>
+			</method>
+			<method>
+				<name>becsultErtek</name>
+			</method>
+			<method>
+				<name>anyag</name>
+			</method>
+			<method>
+				<name>bruttoSulyG</name>
+			</method>
+			<method>
+				<name>arfolyam</name>
+			</method>
+			<method>
+				<name>leiras</name>
+			</method>
+			<method>
+				<name>megjegyzes</name>
+			</method>
+			<method>
+				<name>nettoSulyG</name>
+			</method>
+			<method>
+				<name>szelessegMm</name>
+			</method>
+			<method>
+				<name>hosszMm</name>
+			</method>
+			<method>
+				<name>finomsag</name>
+			</method>
+			<method>
+				<name>becsus</name>
+			</method>
+			<method>
+				<name>tetel</name>
+			</method>
+			<method>
+				<name>zalognem</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.initialloader.ElotoltottUzletiKonfiguracioService</className>
+			<method>
+				<name>load</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.initialloader.ElotoltottAdhatoKolcsonszorzoService</className>
+			<method>
+				<name>load</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.initialloader.InitialLoader</className>
+			<method>
+				<name>load</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.initialloader.ElotoltottEnumNyelvesitesService</className>
+			<method>
+				<name>load</name>
+			</method>
+			<method>
+				<name>szervEgysTipus</name>
+			</method>
+			<method>
+				<name>cimTipusa</name>
+			</method>
+			<method>
+				<name>okmanyTipus</name>
+			</method>
+			<method>
+				<name>telefonTipusa</name>
+			</method>
+			<method>
+				<name>tetelHolVan</name>
+			</method>
+			<method>
+				<name>ugyfelStatusz</name>
+			</method>
+			<method>
+				<name>gyakorisag</name>
+			</method>
+			<method>
+				<name>targyTipus</name>
+			</method>
+			<method>
+				<name>rovancsTipus</name>
+			</method>
+			<method>
+				<name>rovancsTetelEredmeny</name>
+			</method>
+			<method>
+				<name>rovancsTargykor</name>
+			</method>
+			<method>
+				<name>rovancsTargyEredmeny</name>
+			</method>
+			<method>
+				<name>rovancsIsmetlodes</name>
+			</method>
+			<method>
+				<name>rovancsEredmeny</name>
+			</method>
+			<method>
+				<name>rovancsAnyag</name>
+			</method>
+			<method>
+				<name>raktarMuveletTipus</name>
+			</method>
+			<method>
+				<name>targyHolVan</name>
+			</method>
+			<method>
+				<name>feladatTipus</name>
+			</method>
+			<method>
+				<name>becslesTipus</name>
+			</method>
+			<method>
+				<name>aktiv_e</name>
+			</method>
+			<method>
+				<name>anyag</name>
+			</method>
+			<method>
+				<name>ugylettipus</name>
+			</method>
+			<method>
+				<name>kockazat</name>
+			</method>
+			<method>
+				<name>szerzodesTipusa</name>
+			</method>
+			<method>
+				<name>kifizetesModja</name>
+			</method>
+			<method>
+				<name>nyomatKeszultsegiSzintje</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.initialloader.ElotoltottSzerepkorService</className>
+			<method>
+				<name>load</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.initialloader.ElotoltottFinomsagService</className>
+			<method>
+				<name>load</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.initialloader.Helper</className>
+			<method>
+				<name>setHelperMembers</name>
+			</method>
+			<method>
+				<name>getLocalDateTime</name>
+			</method>
+			<method>
+				<name>date</name>
+			</method>
+			<method>
+				<name>date</name>
+			</method>
+			<method>
+				<name>dateUgyfelhez</name>
+			</method>
+			<method>
+				<name>getAdminRole</name>
+			</method>
+			<method>
+				<name>felhasznalo</name>
+			</method>
+			<method>
+				<name>felhasznalo</name>
+			</method>
+			<method>
+				<name>kozvetitoCeg</name>
+			</method>
+			<method>
+				<name>changePassword</name>
+			</method>
+			<method>
+				<name>attachSzervezetToFelhasznalo</name>
+			</method>
+			<method>
+				<name>userInfo</name>
+			</method>
+			<method>
+				<name>newPassword</name>
+			</method>
+			<method>
+				<name>tarolohely</name>
+			</method>
+			<method>
+				<name>zalogfiok</name>
+			</method>
+			<method>
+				<name>elallasiOk</name>
+			</method>
+			<method>
+				<name>rovancs</name>
+			</method>
+			<method>
+				<name>darabszamSzamitas</name>
+			</method>
+			<method>
+				<name>raktariTetel</name>
+			</method>
+			<method>
+				<name>raktariTetel</name>
+			</method>
+			<method>
+				<name>raktar</name>
+			</method>
+			<method>
+				<name>raktar</name>
+			</method>
+			<method>
+				<name>arfolyam</name>
+			</method>
+			<method>
+				<name>zalognem</name>
+			</method>
+			<method>
+				<name>finomsag</name>
+			</method>
+			<method>
+				<name>beosztas</name>
+			</method>
+			<method>
+				<name>beosztas</name>
+			</method>
+			<method>
+				<name>szervezetiEgyseg</name>
+			</method>
+			<method>
+				<name>ugyfel</name>
+			</method>
+			<method>
+				<name>kolcsonSema</name>
+			</method>
+			<method>
+				<name>dijszabas</name>
+			</method>
+			<method>
+				<name>elzalogositas</name>
+			</method>
+			<method>
+				<name>ajanlat</name>
+			</method>
+			<method>
+				<name>ugylet</name>
+			</method>
+			<method>
+				<name>termekKategoriaEleres</name>
+			</method>
+			<method>
+				<name>service</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.initialloader.ElotoltottTermekVerzioService</className>
+			<method>
+				<name>load</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.initialloader.ElotoltottKozvetitoCegService</className>
+			<method>
+				<name>load</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.initialloader.DemoInitialLoader</className>
+			<method>
+				<name>load</name>
+			</method>
+			<method>
+				<name>zalogTargyMap</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.szervezet.business.service.regular.DefaultSzervezetiEgysegService</className>
+			<method>
+				<name>updateCustom</name>
+			</method>
+			<method>
+				<name>create</name>
+			</method>
+			<method>
+				<name>available</name>
+			</method>
+			<method>
+				<name>countAvailable</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.szervezet.business.service.regular.DefaultZalogfiokService</className>
+			<method>
+				<name>updateCustom</name>
+			</method>
+			<method>
+				<name>available</name>
+			</method>
+			<method>
+				<name>countAvailable</name>
+			</method>
+			<method>
+				<name>kovNyugtaSorszamKiadasa</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.szervezet.business.service.regular.DefaultSzervezetService</className>
+			<method>
+				<name>getBeosztasok</name>
+			</method>
+			<method>
+				<name>setBeosztasok</name>
+			</method>
+			<method>
+				<name>getBeosztasokSzervezethez</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.szervezet.business.service.regular.zalogfiok.ZalogfiokValidationService</className>
+			<method>
+				<name>throwExceptionIfTarthatoPenzkeszletIsWrong</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.szervezet.business.service.regular.serviceoperations.ZalogfiokCreateListener</className>
+			<method>
+				<name>before</name>
+			</method>
+			<method>
+				<name>success</name>
+			</method>
+			<method>
+				<name>failure</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.szervezet.business.service.regular.serviceoperations.SzervezetiEgysegCreateListener</className>
+			<method>
+				<name>before</name>
+			</method>
+			<method>
+				<name>success</name>
+			</method>
+			<method>
+				<name>failure</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugyfel.business.service.regular.serviceoperation.UgyfelCreateListener</className>
+			<method>
+				<name>before</name>
+			</method>
+			<method>
+				<name>success</name>
+			</method>
+			<method>
+				<name>failure</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugyfel.business.service.regular.DefaultOkmanyService</className>
+			<method>
+				<name>create</name>
+			</method>
+			<method>
+				<name>postCreate</name>
+			</method>
+			<method>
+				<name>postDelete</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugyfel.business.service.regular.DefaultTelefonService</className>
+			<method>
+				<name>postCreate</name>
+			</method>
+			<method>
+				<name>postDelete</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugyfel.business.service.regular.DefaultCimService</className>
+			<method>
+				<name>create</name>
+			</method>
+			<method>
+				<name>update</name>
+			</method>
+			<method>
+				<name>postCreate</name>
+			</method>
+			<method>
+				<name>postDelete</name>
+			</method>
+			<method>
+				<name>iranyitoszamValidation</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugyfel.business.service.regular.DefaultSolrService</className>
+			<method>
+				<name>activate</name>
+			</method>
+			<method>
+				<name>deleteFromIndex</name>
+			</method>
+			<method>
+				<name>query</name>
+			</method>
+			<method>
+				<name>indexDocument</name>
+			</method>
+			<method>
+				<name>fullIndex</name>
+			</method>
+			<method>
+				<name>prepareSearchString</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugyfel.business.service.regular.DefaultFaxService</className>
+			<method>
+				<name>postCreate</name>
+			</method>
+			<method>
+				<name>postDelete</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugyfel.business.service.regular.DefaultUgyfelService</className>
+			<method>
+				<name>pmtAdatkorEllenorzes</name>
+			</method>
+			<method>
+				<name>nevSzerzAdatkorEllenorzes</name>
+			</method>
+			<method>
+				<name>hasErvenyesCim</name>
+			</method>
+			<method>
+				<name>hasErvenyesOkmany</name>
+			</method>
+			<method>
+				<name>kereses</name>
+			</method>
+			<method>
+				<name>keresesCount</name>
+			</method>
+			<method>
+				<name>postCreate</name>
+			</method>
+			<method>
+				<name>postUpdate</name>
+			</method>
+			<method>
+				<name>postDelete</name>
+			</method>
+			<method>
+				<name>initializeUgyfelsWithAllOfItsAssociations</name>
+			</method>
+			<method>
+				<name>updateField</name>
+			</method>
+			<method>
+				<name>createUgyfelMap</name>
+			</method>
+			<method>
+				<name>getSingletonUzletiKonfiguracio</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugyfel.business.service.regular.DefaultEmailService</className>
+			<method>
+				<name>postCreate</name>
+			</method>
+			<method>
+				<name>postDelete</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.nyomtatas.business.service.regular.DefaultSzerzodesDokService</className>
+			<method>
+				<name>repAzon</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.nyomtatas.business.service.regular.serviceoperation.NyomtatasiFeladatCreateListener</className>
+			<method>
+				<name>before</name>
+			</method>
+			<method>
+				<name>success</name>
+			</method>
+			<method>
+				<name>failure</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.nyomtatas.business.service.regular.SabreHelperService</className>
+			<method>
+				<name>generateNyomat</name>
+			</method>
+			<method>
+				<name>generateTestNyomat</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.nyomtatas.business.service.regular.DefaultDokumentumService</className>
+			<method>
+				<name>nyomatLekerdezese</name>
+			</method>
+			<method>
+				<name>ujDokumentumValtozat</name>
+			</method>
+			<method>
+				<name>ujNyomtatas</name>
+			</method>
+			<method>
+				<name>repAzon</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.nyomtatas.business.service.regular.DefaultNyugtaDokService</className>
+			<method>
+				<name>create</name>
+			</method>
+			<method>
+				<name>repAzon</name>
+			</method>
+			<method>
+				<name>nyomatLekerdezese</name>
+			</method>
+			<method>
+				<name>nyomatLekerdezeseElzalogositasnal</name>
+			</method>
+			<method>
+				<name>nyomatLekerdezeseModositasnal</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.nyomtatas.business.service.regular.DefaultNyomtatasiFeladatService</className>
+			<method>
+				<name>create</name>
+			</method>
+			<method>
+				<name>nyomatLekerdezese</name>
+			</method>
+			<method>
+				<name>nyomtatasLezarva</name>
+			</method>
+			<method>
+				<name>invariant</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.nyomtatas.business.service.regular.DeriveNyomatKeszultsegService</className>
+			<method>
+				<name>deriveNyomatKeszultseg</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.nyomtatas.business.service.regular.DefaultZalogjegyDokService</className>
+			<method>
+				<name>create</name>
+			</method>
+			<method>
+				<name>ujDokumentumValtozat</name>
+			</method>
+			<method>
+				<name>nyomatLekerdezese</name>
+			</method>
+			<method>
+				<name>nyomLekerdElzalogositasnal</name>
+			</method>
+			<method>
+				<name>nyomLekerdModositasnal</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.nyomtatas.business.service.regular.DefaultNevesitettSzerzodesDokService</className>
+			<method>
+				<name>create</name>
+			</method>
+			<method>
+				<name>nyomatLekerdezese</name>
+			</method>
+			<method>
+				<name>nyomLekerdElzalogositasnal</name>
+			</method>
+			<method>
+				<name>nyomLekerdModositasnal</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.nyomtatas.business.service.regular.NumberFormatHelperService</className>
+			<method>
+				<name>bigDecimalSeparated</name>
+			</method>
+			<method>
+				<name>formatMax2FractionDigits</name>
+			</method>
+			<method>
+				<name>deleteNotNumericCharachters</name>
+			</method>
+			<method>
+				<name>getNumberAsText</name>
+			</method>
+			<method>
+				<name>maxHundredText</name>
+			</method>
+			<method>
+				<name>getTenPower3Text</name>
+			</method>
+			<method>
+				<name>getHundreds</name>
+			</method>
+			<method>
+				<name>getTens</name>
+			</method>
+			<method>
+				<name>getOnesAsText</name>
+			</method>
+			<method>
+				<name>ifNullString</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.workflow.business.service.regular.DefaultWorkflowService</className>
+			<method>
+				<name>getProcessTasks</name>
+			</method>
+			<method>
+				<name>mapFrom</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.penztar.business.service.regular.DefaultCimletService</className>
+			<method>
+				<name>inaktivalas</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.raktar.business.service.regular.DefaultRovancsService</className>
+			<method>
+				<name>preCreate</name>
+			</method>
+			<method>
+				<name>rovancsTetelListaGeneralas</name>
+			</method>
+			<method>
+				<name>jegyzokonyvezes</name>
+			</method>
+			<method>
+				<name>lezaras</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.raktar.business.service.regular.DefaultRaktarMuveletService</className>
+			<method>
+				<name>uj</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.raktar.business.service.regular.tarolohely.TarolohelyValidationService</className>
+			<method>
+				<name>throwExceptionIfDuplacateTarolohelyExistInRaktar</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.raktar.business.service.regular.DefaultRovancsTargyService</className>
+			<method>
+				<name>preCreate</name>
+			</method>
+			<method>
+				<name>ellenorzesKesz</name>
+			</method>
+			<method>
+				<name>ujraEllenorzesre</name>
+			</method>
+			<method>
+				<name>postAttach</name>
+			</method>
+			<method>
+				<name>postDetach</name>
+			</method>
+			<method>
+				<name>setEredmenySzoveg</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.raktar.business.service.regular.DefaultRovancsSablonService</className>
+			<method>
+				<name>utemezes</name>
+			</method>
+			<method>
+				<name>isEsedekes</name>
+			</method>
+			<method>
+				<name>isEsedekesDateEqualsTargetDate</name>
+			</method>
+			<method>
+				<name>rovancsLetrehozas</name>
+			</method>
+			<method>
+				<name>darabszamSzamitas</name>
+			</method>
+			<method>
+				<name>inaktivalas</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.raktar.business.service.regular.DefaultRaktarService</className>
+			<method>
+				<name>inaktivalas</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.raktar.business.service.regular.DefaultRovancsAdagService</className>
+			<method>
+				<name>tetelEllenorzes</name>
+			</method>
+			<method>
+				<name>tetelEllenorzesJovahagyas</name>
+			</method>
+			<method>
+				<name>kihozatalInditasa</name>
+			</method>
+			<method>
+				<name>visszaadasInditasa</name>
+			</method>
+			<method>
+				<name>ellenorzesKesz</name>
+			</method>
+			<method>
+				<name>ujraEllenorzes</name>
+			</method>
+			<method>
+				<name>preAttachSingle</name>
+			</method>
+			<method>
+				<name>postAttach</name>
+			</method>
+			<method>
+				<name>postDetach</name>
+			</method>
+			<method>
+				<name>preCreate</name>
+			</method>
+			<method>
+				<name>setEredmenySzoveg</name>
+			</method>
+			<method>
+				<name>setEllenorzottTarhelySzoveg</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.raktar.business.service.regular.rovancs.RovancsDarabszamSzamitasService</className>
+			<method>
+				<name>rovancsDarabszamSzamitas</name>
+			</method>
+			<method>
+				<name>rovancsDarabszamSzamitas</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.raktar.business.service.regular.reports.GenerateRovancsJelentesService</className>
+			<method>
+				<name>tetelesRovancsJelentesKeszites</name>
+			</method>
+			<method>
+				<name>mapToTetelesDto</name>
+			</method>
+			<method>
+				<name>tartalmiRovancsJelentesKeszites</name>
+			</method>
+			<method>
+				<name>mapToTartalmiDto</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.raktar.business.service.regular.DefaultRaktariTetelService</className>
+			<method>
+				<name>postAttachSingle</name>
+			</method>
+			<method>
+				<name>postDetachSingle</name>
+			</method>
+			<method>
+				<name>bevetel</name>
+			</method>
+			<method>
+				<name>kiadas</name>
+			</method>
+			<method>
+				<name>tarolohelyreBetesz</name>
+			</method>
+			<method>
+				<name>tarolohelyrolKivesz</name>
+			</method>
+			<method>
+				<name>athelyezes</name>
+			</method>
+			<method>
+				<name>createCustom</name>
+			</method>
+			<method>
+				<name>deleteCustom</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.raktar.business.service.regular.DefaultTetelFeljegyzesService</className>
+			<method>
+				<name>delete</name>
+			</method>
+			<method>
+				<name>update</name>
+			</method>
+			<method>
+				<name>create</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.raktar.business.service.regular.DefaultRovancsTetelService</className>
+			<method>
+				<name>preCreate</name>
+			</method>
+			<method>
+				<name>postAttach</name>
+			</method>
+			<method>
+				<name>postDetach</name>
+			</method>
+			<method>
+				<name>setEredmenySzoveg</name>
+			</method>
+			<method>
+				<name>tetelEllenorzesKesz</name>
+			</method>
+			<method>
+				<name>ujZarjegy</name>
+			</method>
+			<method>
+				<name>tartalmiEllenorzesKesz</name>
+			</method>
+			<method>
+				<name>ujraEllenorzes</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.raktar.business.service.regular.serviceoperations.RaktariTetelCreateListener</className>
+			<method>
+				<name>before</name>
+			</method>
+			<method>
+				<name>success</name>
+			</method>
+			<method>
+				<name>failure</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.raktar.business.service.regular.serviceoperations.RovancsSablonCreateListener</className>
+			<method>
+				<name>before</name>
+			</method>
+			<method>
+				<name>success</name>
+			</method>
+			<method>
+				<name>failure</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.raktar.business.service.regular.serviceoperations.RaktariFeladatCreateListener</className>
+			<method>
+				<name>before</name>
+			</method>
+			<method>
+				<name>success</name>
+			</method>
+			<method>
+				<name>failure</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.raktar.business.service.regular.serviceoperations.TarolohelyCreateListener</className>
+			<method>
+				<name>before</name>
+			</method>
+			<method>
+				<name>success</name>
+			</method>
+			<method>
+				<name>failure</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.raktar.business.service.regular.serviceoperations.TetelFeljegyzesCreateListener</className>
+			<method>
+				<name>before</name>
+			</method>
+			<method>
+				<name>success</name>
+			</method>
+			<method>
+				<name>failure</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.raktar.business.service.regular.serviceoperations.RaktarCreateListener</className>
+			<method>
+				<name>before</name>
+			</method>
+			<method>
+				<name>success</name>
+			</method>
+			<method>
+				<name>failure</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.raktar.business.service.regular.DefaultTarolohelyService</className>
+			<method>
+				<name>updateCustom</name>
+			</method>
+			<method>
+				<name>inaktivalas</name>
+			</method>
+			<method>
+				<name>postAttach</name>
+			</method>
+			<method>
+				<name>postDetach</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.raktar.business.service.regular.DefaultRaktariFeladatService</className>
+			<method>
+				<name>postAttach</name>
+			</method>
+			<method>
+				<name>bevetelezes</name>
+			</method>
+			<method>
+				<name>kihozatal</name>
+			</method>
+			<method>
+				<name>attachTetelekToRaktariFeladat</name>
+			</method>
+			<method>
+				<name>buildRaktariFeladat</name>
+			</method>
+			<method>
+				<name>startWorkflowForRaktariFeladat</name>
+			</method>
+			<method>
+				<name>lezaras</name>
+			</method>
+			<method>
+				<name>rakfel_raktarosTetelVegrehajtas</name>
+			</method>
+			<method>
+				<name>bevetelezesRaktarosnal</name>
+			</method>
+			<method>
+				<name>rakfel_igenyloTetelKiadasa</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.felhasznalo.business.service.regular.DefaultBeosztasService</className>
+			<method>
+				<name>create</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.felhasznalo.business.service.regular.DefaultPrivilegiumService</className>
+			<method>
+				<name>update</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.felhasznalo.business.service.regular.DefaultFelhasznaloService</className>
+			<method>
+				<name>igenyloRaktariFeladatok</name>
+			</method>
+			<method>
+				<name>igenyloRaktariFeladatokCount</name>
+			</method>
+			<method>
+				<name>raktarosRaktariFeladatok</name>
+			</method>
+			<method>
+				<name>raktarosRaktariFeladatokCount</name>
+			</method>
+			<method>
+				<name>createCustom</name>
+			</method>
+			<method>
+				<name>attach</name>
+			</method>
+			<method>
+				<name>updateCustom</name>
+			</method>
+			<method>
+				<name>nevLetezik</name>
+			</method>
+			<method>
+				<name>szerepkorDetachCustom</name>
+			</method>
+			<method>
+				<name>create</name>
+			</method>
+			<method>
+				<name>aktivalas</name>
+			</method>
+			<method>
+				<name>inaktivalas</name>
+			</method>
+			<method>
+				<name>getOrgOptions</name>
+			</method>
+			<method>
+				<name>changeFelhasznaloActiveField</name>
+			</method>
+			<method>
+				<name>detach</name>
+			</method>
+			<method>
+				<name>getSzervBeosztasok</name>
+			</method>
+			<method>
+				<name>szerepkorMasolas</name>
+			</method>
+			<method>
+				<name>isValuer</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.felhasznalo.business.service.regular.DefaultNaploEsemenyService</className>
+			<method>
+				<name>customQueryForRefFelhasznalo</name>
+			</method>
+			<method>
+				<name>customQueryForRefFelhasznaloCount</name>
+			</method>
+			<method>
+				<name>getFelhasznaloFromDB</name>
+			</method>
+			<method>
+				<name>getExpressionForRefFelhasznaloQuery</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.felhasznalo.business.service.regular.DefaultSzerepkorService</className>
+			<method>
+				<name>deleteCustom</name>
+			</method>
+			<method>
+				<name>create</name>
+			</method>
+			<method>
+				<name>read</name>
+			</method>
+			<method>
+				<name>list</name>
+			</method>
+			<method>
+				<name>attach</name>
+			</method>
+			<method>
+				<name>detach</name>
+			</method>
+			<method>
+				<name>updateBeoszthatoAttribute</name>
+			</method>
+			<method>
+				<name>initializeSzerepkorsWithPrivilegiums</name>
+			</method>
+			<method>
+				<name>initializeSzerepkorWithItsPrivilegium</name>
+			</method>
+			<method>
+				<name>getPrivilegiumokSzoveg</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.targy.business.service.regular.ZalognemValidatorService</className>
+			<method>
+				<name>throwErrorIfAlapertelmezettZalognemExists</name>
+			</method>
+			<method>
+				<name>validateDefaultNfErtek</name>
+			</method>
+			<method>
+				<name>validateDefaultBrillErtek</name>
+			</method>
+			<method>
+				<name>validate</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.targy.business.service.regular.serviceoperation.ZalogtargyBecslesCreateListener</className>
+			<method>
+				<name>before</name>
+			</method>
+			<method>
+				<name>success</name>
+			</method>
+			<method>
+				<name>failure</name>
+			</method>
+			<method>
+				<name>setDefaultZeroValueToMustHaveNullFields</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.targy.business.service.regular.serviceoperation.TargyFeljegyzesCreateListener</className>
+			<method>
+				<name>before</name>
+			</method>
+			<method>
+				<name>success</name>
+			</method>
+			<method>
+				<name>failure</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.targy.business.service.regular.serviceoperation.ZalogtargyCreateListener</className>
+			<method>
+				<name>before</name>
+			</method>
+			<method>
+				<name>success</name>
+			</method>
+			<method>
+				<name>failure</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.targy.business.service.regular.DefaultFinomsagService</className>
+			<method>
+				<name>create</name>
+			</method>
+			<method>
+				<name>delete</name>
+			</method>
+			<method>
+				<name>inaktivalas</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.targy.business.service.regular.DefaultTargyFeljegyzesService</className>
+			<method>
+				<name>postCreate</name>
+			</method>
+			<method>
+				<name>delete</name>
+			</method>
+			<method>
+				<name>update</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.targy.business.service.regular.DefaultZalognemService</className>
+			<method>
+				<name>postUpdate</name>
+			</method>
+			<method>
+				<name>update</name>
+			</method>
+			<method>
+				<name>create</name>
+			</method>
+			<method>
+				<name>getSameZalognems</name>
+			</method>
+			<method>
+				<name>thorwExceptionIfErvKezdeteIsAfterErvVege</name>
+			</method>
+			<method>
+				<name>thowExeptionIfErvDatesOverlap</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.targy.business.service.regular.ZalogtargyBecslesValidatorService</className>
+			<method>
+				<name>validate</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.targy.business.service.regular.DefaultZalogtargyBecslesService</className>
+			<method>
+				<name>createBecslesAndZalogtargy</name>
+			</method>
+			<method>
+				<name>create</name>
+			</method>
+			<method>
+				<name>update</name>
+			</method>
+			<method>
+				<name>setZalogtargyDerivedFields</name>
+			</method>
+			<method>
+				<name>attachAnyagToZalogtargy</name>
+			</method>
+			<method>
+				<name>detachAnyagFromZalogtargy</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.targy.business.service.regular.DefaultArfolyamService</className>
+			<method>
+				<name>create</name>
+			</method>
+			<method>
+				<name>getArfolyam</name>
+			</method>
+			<method>
+				<name>getMostRecentArfolyamForAnyag</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.targy.business.service.regular.DefaultZalogtargyService</className>
+			<method>
+				<name>ujBecsles</name>
+			</method>
+			<method>
+				<name>setFeljegyzesek</name>
+			</method>
+			<method>
+				<name>deleteCustom</name>
+			</method>
+			<method>
+				<name>setTarolohely</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugylet.business.service.regular.serviceoperation.GenerateSzerzodesAzonService</className>
+			<method>
+				<name>setSzerzodesAzon</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugylet.business.service.regular.DefaultElzalogositasService</className>
+			<method>
+				<name>setUgyfel</name>
+			</method>
+			<method>
+				<name>elallas</name>
+			</method>
+			<method>
+				<name>khrInditasa</name>
+			</method>
+			<method>
+				<name>szerzodesEllenorzes</name>
+			</method>
+			<method>
+				<name>ajanlatotRogzit</name>
+			</method>
+			<method>
+				<name>startProcess</name>
+			</method>
+			<method>
+				<name>ajanlatotKalkulal</name>
+			</method>
+			<method>
+				<name>attachSingle</name>
+			</method>
+			<method>
+				<name>raktariBevetelezes</name>
+			</method>
+			<method>
+				<name>getElzalogositasFromDB</name>
+			</method>
+			<method>
+				<name>kifizetesTenyenekIgazolas</name>
+			</method>
+			<method>
+				<name>szerzodesFelvitelZarasa</name>
+			</method>
+			<method>
+				<name>kifizetesreElkuld</name>
+			</method>
+			<method>
+				<name>penztariRendezesZarasa</name>
+			</method>
+			<method>
+				<name>attach</name>
+			</method>
+			<method>
+				<name>detach</name>
+			</method>
+			<method>
+				<name>detachSingle</name>
+			</method>
+			<method>
+				<name>update</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugylet.business.service.regular.DefaultUgyletService</className>
+			<method>
+				<name>createCustom</name>
+			</method>
+			<method>
+				<name>szerzSorszamKikerese</name>
+			</method>
+			<method>
+				<name>szerzSorszamUjrahasznositas</name>
+			</method>
+			<method>
+				<name>kolcsonKondicioKalkulal</name>
+			</method>
+			<method>
+				<name>nfAdhatoKolcsonKalkulal</name>
+			</method>
+			<method>
+				<name>nfZalogertekKalkulal</name>
+			</method>
+			<method>
+				<name>traverseSingle</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugylet.business.service.regular.DefaultDijszabasService</className>
+			<method>
+				<name>attachSingle</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugylet.business.service.regular.DefaultTermekverzioService</className>
+			<method>
+				<name>createCustom</name>
+			</method>
+			<method>
+				<name>preUpdate</name>
+			</method>
+			<method>
+				<name>preDelete</name>
+			</method>
+			<method>
+				<name>torolhetosegVizsgalat</name>
+			</method>
+			<method>
+				<name>veglegesites</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugylet.business.service.regular.szerzodes.SzerzodesKolcsonKondicioKalkulalService</className>
+			<method>
+				<name>kolcsonKondicioKalkulal</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugylet.business.service.regular.szerzodes.SzerzodesUjSzerzDokKesziteseService</className>
+			<method>
+				<name>ujSzerzDokKeszitese</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugylet.business.service.regular.ZalogtetelInvariantService</className>
+			<method>
+				<name>fulfillInvariantFromZalogtetel</name>
+			</method>
+			<method>
+				<name>fulfillInvariantFromAjanlat</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugylet.business.service.regular.DefaultZalogtetelService</className>
+			<method>
+				<name>preCreate</name>
+			</method>
+			<method>
+				<name>postCreate</name>
+			</method>
+			<method>
+				<name>postAttach</name>
+			</method>
+			<method>
+				<name>postDetach</name>
+			</method>
+			<method>
+				<name>preUpdate</name>
+			</method>
+			<method>
+				<name>copyZalogtetel</name>
+			</method>
+			<method>
+				<name>validateAttributes</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugylet.business.service.regular.DefaultBankiUtalasService</className>
+			<method>
+				<name>startProcess</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugylet.business.service.regular.DefaultAjanlatService</className>
+			<method>
+				<name>postCreate</name>
+			</method>
+			<method>
+				<name>attachSingle</name>
+			</method>
+			<method>
+				<name>attachForExtensionAssociations</name>
+			</method>
+			<method>
+				<name>getDijszabasFromDB</name>
+			</method>
+			<method>
+				<name>postDetach</name>
+			</method>
+			<method>
+				<name>postAttach</name>
+			</method>
+			<method>
+				<name>postUpdate</name>
+			</method>
+			<method>
+				<name>ervenytelenites</name>
+			</method>
+			<method>
+				<name>ujElzalogositasSzerzodes</name>
+			</method>
+			<method>
+				<name>customAjanlatRead</name>
+			</method>
+			<method>
+				<name>inicializeZalogtargyBecslesekToSzerzodesek</name>
+			</method>
+			<method>
+				<name>initializeRaktariTetelekWithZtargyakAndZtargyBecslesek</name>
+			</method>
+			<method>
+				<name>getAjanlatMembers</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugylet.business.service.regular.DefaultModositoSzerzodesService</className>
+			<method>
+				<name>ujSzerzDokKeszitese</name>
+			</method>
+			<method>
+				<name>kolcsonKondicioKalkulal</name>
+			</method>
+			<method>
+				<name>vazlatLezaras</name>
+			</method>
+			<method>
+				<name>aktivalas</name>
+			</method>
+			<method>
+				<name>inaktivalas</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugylet.business.service.regular.DefaultSzerzodesService</className>
+			<method>
+				<name>traverse</name>
+			</method>
+			<method>
+				<name>countTraverse</name>
+			</method>
+			<method>
+				<name>ujSzerzDokKeszitese</name>
+			</method>
+			<method>
+				<name>kolcsonKondicioKalkulal</name>
+			</method>
+			<method>
+				<name>deleteCustom</name>
+			</method>
+			<method>
+				<name>vazlatLezaras</name>
+			</method>
+			<method>
+				<name>rontas</name>
+			</method>
+			<method>
+				<name>aktivalas</name>
+			</method>
+			<method>
+				<name>inaktivalas</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugylet.business.service.regular.DefaultKHRLekerdezesService</className>
+			<method>
+				<name>startProcess</name>
+			</method>
+			<method>
+				<name>eszkalacioKuldese</name>
+			</method>
+			<method>
+				<name>aktivKhrKeresese</name>
+			</method>
+			<method>
+				<name>getSingletonUzletiKonfiguracio</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugylet.business.service.regular.DefaultAdhatoKolcsonSzorzoService</className>
+			<method>
+				<name>getSzorzo</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugylet.business.service.regular.DefaultTermekService</className>
+			<method>
+				<name>preCreate</name>
+			</method>
+			<method>
+				<name>ujVazlat</name>
+			</method>
+			<method>
+				<name>preDelete</name>
+			</method>
+			<method>
+				<name>postAttach</name>
+			</method>
+			<method>
+				<name>postDetach</name>
+			</method>
+			<method>
+				<name>setKompatibilisKockazatokSzoveg</name>
+			</method>
+			<method>
+				<name>setKompatibilisUgylettipusokSzoveg</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugylet.business.service.regular.elzalogositas.AjanlatCalculatorService</className>
+			<method>
+				<name>getKompatibilisTermekverziok</name>
+			</method>
+			<method>
+				<name>calculateBruttoKolcson</name>
+			</method>
+			<method>
+				<name>calculateAjanlat</name>
+			</method>
+			<method>
+				<name>roundToWholeNumber</name>
+			</method>
+			<method>
+				<name>getZalogtetelekFromDB</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugylet.business.service.regular.elzalogositas.ElzalogositasFinalStateValidatorService</className>
+			<method>
+				<name>throwErrorInFinalState</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugylet.business.service.regular.DefaultElzalogositasSzerzodesService</className>
+			<method>
+				<name>createCustom</name>
+			</method>
+			<method>
+				<name>preUpdate</name>
+			</method>
+			<method>
+				<name>traverse</name>
+			</method>
+			<method>
+				<name>countTraverse</name>
+			</method>
+			<method>
+				<name>zalogtargyTorlese</name>
+			</method>
+			<method>
+				<name>vazlatLezaras</name>
+			</method>
+			<method>
+				<name>aktivalas</name>
+			</method>
+			<method>
+				<name>inaktivalas</name>
+			</method>
+			<method>
+				<name>deleteCustom</name>
+			</method>
+			<method>
+				<name>ujRaktariTetel</name>
+			</method>
+			<method>
+				<name>rontas</name>
+			</method>
+			<method>
+				<name>updateBruttoKolcson</name>
+			</method>
+			<method>
+				<name>kolcsonKondicioKalkulal</name>
+			</method>
+			<method>
+				<name>ujSzerzDokKeszitese</name>
+			</method>
+			<method>
+				<name>keszVizsgal</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.DefaultFelhasznaloValidationService</className>
+			<method>
+				<name>validateBecsusiLimit</name>
+			</method>
+			<method>
+				<name>validateUniqueUsername</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.esemenynaplo.regular.DefaultNaploEsemenyCreatorService</className>
+			<method>
+				<name>logWithRefFelhasznaloUserName</name>
+			</method>
+			<method>
+				<name>logWithRefFelhasznaloId</name>
+			</method>
+			<method>
+				<name>getKezdemenyezo</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.user.extractor.regular.DefaultAnakinUserExtractorService</className>
+			<method>
+				<name>getCurrentUserAs</name>
+			</method>
+			<method>
+				<name>getCurrentUserAs</name>
+			</method>
+			<method>
+				<name>getCurrentUser</name>
+			</method>
+			<method>
+				<name>getCurrentUser</name>
+			</method>
+			<method>
+				<name>createNavigatorUserExpresison</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.common.utils.AnakinTemplateService</className>
+			<method>
+				<name>activate</name>
+			</method>
+			<method>
+				<name>generateTetelesRovancsJelentes</name>
+			</method>
+			<method>
+				<name>generateTartalmiRovancsJelentes</name>
+			</method>
+			<method>
+				<name>renderTemplateToPDF</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.common.utils.DateTimeFormatService</className>
+			<method>
+				<name>format</name>
+			</method>
+			<method>
+				<name>format</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.common.utils.SystemIsReadyMonitor</className>
+			<method>
+				<name>activate</name>
+			</method>
+			<method>
+				<name>deactivate</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.AnakinCandidateGroupResolverService</className>
+			<method>
+				<name>resolveCandidateGroupsForCurrentUser</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.ext.business.service.regular.DefaultEnumBasedAnakinSecurityService</className>
+			<method>
+				<name>throwExceptionWithoutPrivilegiumsForSzervezet</name>
+			</method>
+			<method>
+				<name>throwExceptionSzuksegesPrivilegiumHianyaban</name>
+			</method>
+			<method>
+				<name>throwExceptionSzuksegesPrivilegiumHianyaban</name>
+			</method>
+			<method>
+				<name>throwExceptionSzuksegesPrivilegiumokHianyaban</name>
+			</method>
+			<method>
+				<name>vanSzuksegesPrivilegium</name>
+			</method>
+			<method>
+				<name>vanSzuksegesPrivilegium</name>
+			</method>
+			<method>
+				<name>vannakSzuksegesPrivilegiumok</name>
+			</method>
+			<method>
+				<name>keresettEgysegekPrivilegiumhoz</name>
+			</method>
+			<method>
+				<name>keresettSzervezetIDkPrivilegiumhoz</name>
+			</method>
+			<method>
+				<name>keresettSzervezetIDkPrivilegiumokhoz</name>
+			</method>
+			<method>
+				<name>hozzaferesiTablaLekeres</name>
+			</method>
+			<method>
+				<name>getSecurityInputPairs</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.ext.business.service.regular.DefaultAnakinSecurityService</className>
+			<method>
+				<name>vannakSzuksegesPrivilegiumok</name>
+			</method>
+			<method>
+				<name>throwExceptionSzuksegesPrivilegiumokHianyaban</name>
+			</method>
+			<method>
+				<name>throwExceptionSzuksegesPrivilegiumHianyaban</name>
+			</method>
+			<method>
+				<name>vanSzuksegesPrivilegium</name>
+			</method>
+			<method>
+				<name>hozzaferesiTablaLekeres</name>
+			</method>
+			<method>
+				<name>keresettEgysegekPrivilegiumokhoz</name>
+			</method>
+			<method>
+				<name>vannakSzuksegesPrivilegiumokInternal</name>
+			</method>
+			<method>
+				<name>vanSzuksegesPrivilegiumInternal</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.ext.business.service.regular.DefaultEnumLanguageService</className>
+			<method>
+				<name>allEnumsForGivenLanguage</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.ext.business.service.regular.DefaultElzalogositasRestAdapterHelperService</className>
+			<method>
+				<name>createElzalogositas</name>
+			</method>
+			<method>
+				<name>readElzalogositas</name>
+			</method>
+			<method>
+				<name>readElzalogositasiSzerzodes</name>
+			</method>
+			<method>
+				<name>readZalogtargy</name>
+			</method>
+			<method>
+				<name>readZalogtetel</name>
+			</method>
+			<method>
+				<name>saveZalogtetel</name>
+			</method>
+			<method>
+				<name>ajanlatRogzites</name>
+			</method>
+			<method>
+				<name>ajanlatErvenytelenites</name>
+			</method>
+			<method>
+				<name>calculateArfolyamByFinomsag</name>
+			</method>
+			<method>
+				<name>calculateNemesfemAdhatoKolcson</name>
+			</method>
+			<method>
+				<name>createSzerzodes</name>
+			</method>
+			<method>
+				<name>saveZalogtargy</name>
+			</method>
+			<method>
+				<name>deleteSzerzodes</name>
+			</method>
+			<method>
+				<name>deleteZalogtargy</name>
+			</method>
+			<method>
+				<name>elallas</name>
+			</method>
+			<method>
+				<name>kifizetve</name>
+			</method>
+			<method>
+				<name>legutobbiNyomtatasiFeladat</name>
+			</method>
+			<method>
+				<name>nyomtatasMinositese</name>
+			</method>
+			<method>
+				<name>updateElzalogositas</name>
+			</method>
+			<method>
+				<name>updateNyugtaMegjegyzes</name>
+			</method>
+			<method>
+				<name>updateSzerzodes</name>
+			</method>
+		</pointcut>
+
+	</instrumentation>
+</extension>

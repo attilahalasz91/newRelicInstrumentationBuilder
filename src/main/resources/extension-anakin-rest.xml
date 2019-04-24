@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension xmlns="https://newrelic.com/docs/java/xsd/v1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="newrelic-extension extension.xsd " name="extension-anakin-rest"
+	version="1.0" enabled="true">
+	<instrumentation>
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.RovancsCustomRestOperation</className>
+			<method>
+				<name>downloadTetRovReport</name>
+			</method>
+			<method>
+				<name>downloadTarRovReport</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugylet.rest.dto.SzerzodesDetailsDto</className>
+			<method>
+				<name>createAjanlatiNemesfemek</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugylet.rest.dto.JudoEntity</className>
+			<method>
+				<name>fromId</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.business.domain.ugylet.rest.ElzalogositasCustomRestOperation</className>
+			<method>
+				<name>read</name>
+			</method>
+			<method>
+				<name>create</name>
+			</method>
+			<method>
+				<name>update</name>
+			</method>
+			<method>
+				<name>elallas</name>
+			</method>
+			<method>
+				<name>saveZalogtetel</name>
+			</method>
+			<method>
+				<name>readZalogtetel</name>
+			</method>
+			<method>
+				<name>readSzerzodes</name>
+			</method>
+			<method>
+				<name>saveSzerzodes</name>
+			</method>
+			<method>
+				<name>createSzerzodes</name>
+			</method>
+			<method>
+				<name>ajanlatKalkulalas</name>
+			</method>
+			<method>
+				<name>ajanlatRogzites</name>
+			</method>
+			<method>
+				<name>zalogtargyRogzites</name>
+			</method>
+			<method>
+				<name>readZalogtargy</name>
+			</method>
+			<method>
+				<name>deleteZalogtargy</name>
+			</method>
+			<method>
+				<name>penztariRendezes</name>
+			</method>
+			<method>
+				<name>calculateNemesfemAdhatoKolcson</name>
+			</method>
+			<method>
+				<name>deleteSzerzodes</name>
+			</method>
+			<method>
+				<name>ajanlatErvenytelenites</name>
+			</method>
+			<method>
+				<name>updateNyugtaMegjegyzes</name>
+			</method>
+			<method>
+				<name>kifizetve</name>
+			</method>
+			<method>
+				<name>getLegutobbiNyomtatasiFeladat</name>
+			</method>
+			<method>
+				<name>nyomtatasMinositese</name>
+			</method>
+			<method>
+				<name>calculateArfolyamByFinomsag</name>
+			</method>
+		</pointcut>
+
+		<pointcut transactionStartPoint="true"
+			excludeFromTransactionTrace="false" ignoreTransaction="false">
+			<className>hu.blackbelt.anakin.DocumentStoreRestOperation</className>
+			<method>
+				<name>download</name>
+			</method>
+		</pointcut>
+
+	</instrumentation>
+</extension>
