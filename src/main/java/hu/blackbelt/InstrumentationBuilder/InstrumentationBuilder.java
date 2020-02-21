@@ -17,14 +17,17 @@ import java.util.List;
 
 public class InstrumentationBuilder {
 
-    private static final String NAME_OF_THE_XML_FILE_TO_BE_CREATED = "src/main/resources/extension-anakin-rest.xml";
+    private static final String EXTENSION_NAME = "extension-anakin-service";
+    private static final String LOCATION_OF_CLASSES = "/home/attila/work/anakin/anakin-service-regular/src/main/java";
+    //private static final String LOCATION_OF_CLASSES = "/home/attila/work/anakin/anakin-rest-test/src/test/java";
+
+    private static final String NAME_OF_THE_XML_FILE_TO_BE_CREATED = "src/main/resources/" + EXTENSION_NAME + ".xml";
     private static final String START_OF_XML_FILE = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
             "<extension xmlns=\"https://newrelic.com/docs/java/xsd/v1.0\"\n" +
             "\txmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n" +
-            "\txsi:schemaLocation=\"newrelic-extension extension.xsd \" name=\"extension-anakin-rest\"\n" +
+            "\txsi:schemaLocation=\"newrelic-extension extension.xsd \" name=\"" + EXTENSION_NAME + "\"\n" +
             "\tversion=\"1.0\" enabled=\"true\">\n" +
             "\t<instrumentation>\n";
-    private static final String LOCATION_OF_CLASSES = "/home/attila/work/anakin/anakin-rest/src/main/java";
     private static final String END_OF_XML_FILE = "\t</instrumentation>\n" +
             "</extension>";
 
